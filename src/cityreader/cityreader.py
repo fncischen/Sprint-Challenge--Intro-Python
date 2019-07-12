@@ -5,12 +5,12 @@ import csv
 
 class City:
   def __init__(self, name, lat, lon):
-    self.name: name
-    self.lat: lat
-    self.lon: lon
+    self.name = name
+    self.lat = lat
+    self.lon = lon
 
   def __str__(self):
-    return "Name: %s Lat: %d Long %d" % (self.name, self.lat, self.lon)
+    return "Name: %s Lat: %s Long %s" % (self.name, self.lat, self.lon)
     
 
 # We have a collection of US cities with population over 750,000 stored in the
@@ -34,9 +34,9 @@ def cityreader(cities=[]):
     with open('cities.csv', newline='') as csvfile:
       reader = csv.DictReader(csvfile)
       for row in reader:
-          cities.append(City(row['city'], row['lat'], row['lng']))
-
-    print(cities)
+        print(row["city"])
+        cities.append( City( row['city'], row['lat'], row['lng']))
+        
     return cities
 
 cities = cityreader(cities)
